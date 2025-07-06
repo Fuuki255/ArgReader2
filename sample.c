@@ -4,12 +4,14 @@ int main(int argc, char** argv) {
 	// Init ARG_Reader
 	ARG_Init("ArgReader Sample");
 
-    ARG_CreateOption_String("string-option", "s", "No input", "String option");
-    ARG_CreateOption_Boolean("boolean-option", "b", "Boolean Option");
-    ARG_CreateOption_Number("number-option", "n", 0, "Number Option");
-	ARG_CreateOption_Array("array-option", "a", "Array Option");
+    ARG_CreateOption_String("string", "s", "No input", "String option"); // fullname, shortname, defaultvalue, description
+    ARG_CreateOption_Boolean("boolean", "b", "Boolean Option");          // fullname, shortname, description
+    ARG_CreateOption_Number("number", "n", 0, "Number Option");          // fullname, shortname, defaultvalue, description
+	ARG_CreateOption_Array("array", "a", "Array Option");                // fullname, shortname, description
 
-	ARG_AddIndexs("string-option", "boolean-option", "number-option", "array-option", NULL);
+    // set index option order string, boolean, number and array
+    // the NULL in last to tell ARG_AddIndexs there are no more value
+	ARG_AddIndexs("string", "boolean", "number", "array", NULL);
 
 	// Read Parameters
 	if (ARG_Read(argc, argv)) {
@@ -17,12 +19,12 @@ int main(int argc, char** argv) {
 	}
 
 	// Get Options
-	const char* stringOption = ARG_GetOption_String("string-option");
-	bool booleanOption = ARG_GetOption_Boolean("boolean-option");
-	double numberOption = ARG_GetOption_Number("number-option");
+	const char* stringOption = ARG_GetOption_String("string");
+	bool booleanOption = ARG_GetOption_Boolean("boolean");
+	double numberOption = ARG_GetOption_Number("number");
 	
 	int arrayLength;
-	const char** arrayOption = ARG_GetOption_Array("array-option", &arrayLength);
+	const char** arrayOption = ARG_GetOption_Array("array", &arrayLength);
 
 	// Print Options
 	printf("String Option: %s\n", stringOption);
