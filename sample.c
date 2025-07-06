@@ -4,13 +4,13 @@ int main(int argc, char** argv) {
 	// Init ARG_Reader
 	ARG_Init("ArgReader Sample");
 
-    ARG_CreateOption_String("string", "s", "No input", "String option"); // fullname, shortname, defaultvalue, description
-    ARG_CreateOption_Boolean("boolean", "b", "Boolean Option");          // fullname, shortname, description
-    ARG_CreateOption_Number("number", "n", 0, "Number Option");          // fullname, shortname, defaultvalue, description
+	ARG_CreateOption_String("string", "s", "No input", "String option"); // fullname, shortname, defaultvalue, description
+	ARG_CreateOption_Boolean("boolean", "b", "Boolean Option");          // fullname, shortname, description
+	ARG_CreateOption_Number("number", "n", 0, "Number Option");          // fullname, shortname, defaultvalue, description
 	ARG_CreateOption_Array("array", "a", "Array Option");                // fullname, shortname, description
 
-    // set index option order string, boolean, number and array
-    // the NULL in last to tell ARG_AddIndexs there are no more value
+	// set index option order string, boolean, number and array
+	// the NULL in last to tell ARG_AddIndexs there are no more value
 	ARG_AddIndexs("string", "boolean", "number", "array", NULL);
 
 	// Read Parameters
